@@ -5,9 +5,12 @@ from rest_framework.response import Response
 from rest_framework import status
 from ..entidades.vaga import Vaga
 from ..pagination import PaginacaoCustom
+from rest_framework.permissions import IsAuthenticated
 
 
 class VagaList(APIView):
+    permission_classes = [IsAuthenticated,]
+
 
     def get(self, request, format=None):
         '''MÉTODO RESPOSÁVEL LISTAR TODAS AS VAGAS'''

@@ -4,11 +4,15 @@ from ..serializers import tecnologia_serializers
 from rest_framework.response import Response
 from rest_framework import status
 from ..entidades import tecnologia
+from rest_framework.permissions import IsAuthenticated
+
 
 
 
 # CLASSE COM MÉTODOS Q NÃO RECEBEM PARAMETRO
 class TecnologiasList(APIView):
+
+    permission_classes = [IsAuthenticated,]
 
     def get(self, request, format=None):
         '''MÉTODO RESPOSÁVEL LISTAR TODAS AS TECNOLOGIAS'''

@@ -31,7 +31,9 @@ INSTALLED_APPS = [
     'api',
 
     # rest_framework
-     'rest_framework',
+    'rest_framework',
+    # auth api
+    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [
@@ -43,6 +45,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 
 ROOT_URLCONF = 'django_rest.urls'
 
@@ -113,11 +116,35 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 
-
+# CONFIGURANDO PADRÃO DO REST-FRAMEWORK
 REST_FRAMEWORK = {
+
+    #PAGINAÇÃO
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 2
+    'PAGE_SIZE': 2,
+
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+    'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
 }
+
+
+SECRET_KEY_JWT = 'SADASDASIDUASIHDIASDDASD'
+
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    "BLACKLIST_AFTER_ROTATION": False,
+    "SIGNING_KEY": SECRET_KEY_JWT,
+    "AUTH_HEADER_TYPES": ("Bearer",),
+
+}
+
+
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
