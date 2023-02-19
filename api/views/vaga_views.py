@@ -4,16 +4,19 @@ from ..services import vaga_services
 from rest_framework.response import Response
 from rest_framework import status
 from ..entidades.vaga import Vaga
-
+from ..pagination import PaginacaoCustom
 
 
 class VagaList(APIView):
 
     def get(self, request, format=None):
         '''MÉTODO RESPOSÁVEL LISTAR TODAS AS VAGAS'''
+        pagination = PaginacaoCustom()
         vagas = vaga_services.listar_vagas()
-        serializer = vaga_serializers.VagaSerializers(vagas, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        resultado = pagination.paginate_queryset(vagas, request)
+        serializer = vaga_serializers.VagaSerializers(resultado, many=True)
+        return pagination.get_paginated_response(serializer.data)
+        #return Response(serializer.data, status=status.HTTP_200_OK)
 
 
     def post(self, request, format=None):
