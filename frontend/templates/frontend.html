@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<!--CONTAINER CARDS-->
+<div class='container mt-4' style='width: 40%;'>
+    <div class='justify-content-center align-items-center row'>
+       <form class='d-flex'>
+            <input type="text" class='form-control mx-2' placeholder='Tecnolgia...' id='tech'>
+            <input type="submit" onclick='cadastro()' value="ENVIAR" class='btn btn-info'>
+        </form> 
+        {% comment %}
+            <h6 class='btn btn-info' style='width: 100%; cursor: default;'>
+            <strong>AVALIE AS OPORTUNIDADES DISPONÍVEIS</strong>
+        </h6>
+        
+        {% endcomment %}
+     
+        <div class='p-3 mt-3'>
+            <table class="table table-borderless table-hover table-light text-center" >
+                <thead>
+                  <tr>
+                    <th scope="col">Tecnologia</th>
+                    <th scope="col">Ações</th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                {% for tech in tecnologias %}
+                  <tr>
+                    <td><strong>{{tech.nome}}</strong></td>
+                    <td><a href="#" class='btn btn-danger btn-sm'><i class='fas fa-trash'></i></a></td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+             
+            </div>
+        </div>
+    </div>
+</div>
+<!--END CARDS-->
+
+{% endblock content %}   

@@ -6,6 +6,7 @@ urlpatterns = [
 
     # ROTAS PARA A API
     path('api/', include('api.urls')),
+    path('', include('frontend.urls')),
 
     # ROTAS PARA AUTENTICACAO
 ]
