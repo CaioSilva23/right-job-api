@@ -30,12 +30,11 @@ INSTALLED_APPS = [
 
     #my apps
     'api',
-
     # rest_framework
     'rest_framework',
     # auth api
     'rest_framework_simplejwt',
-    'frontend',
+
 ]
 
 MIDDLEWARE = [
