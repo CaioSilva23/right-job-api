@@ -133,7 +133,7 @@ REST_FRAMEWORK = {
 
     'DEFAULT_AUTHENTICATION_CLASSES': (
     'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+    ),
 }
 
 
@@ -142,8 +142,8 @@ SECRET_KEY_JWT = 'SADASDASIDUASIHDIASDDASD'
 from datetime import timedelta
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60), # TOKEN DE USUÁRIO LOGADO 1h
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1), # 
     "BLACKLIST_AFTER_ROTATION": False,
     "SIGNING_KEY": SECRET_KEY_JWT,
     "AUTH_HEADER_TYPES": ("Bearer",),
